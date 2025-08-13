@@ -34,6 +34,8 @@
             txtcontactTitle = new TextBox();
             txtaddress = new TextBox();
             txtCity = new TextBox();
+            listBox1 = new ListBox();
+            listBox2 = new ListBox();
             SuspendLayout();
             // 
             // btnnewSupplier
@@ -92,11 +94,29 @@
             txtCity.Size = new Size(214, 27);
             txtCity.TabIndex = 5;
             // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(616, 75);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(281, 284);
+            listBox1.TabIndex = 6;
+            // 
+            // listBox2
+            // 
+            listBox2.FormattingEnabled = true;
+            listBox2.Location = new Point(977, 75);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(281, 284);
+            listBox2.TabIndex = 7;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1351, 450);
+            Controls.Add(listBox2);
+            Controls.Add(listBox1);
             Controls.Add(txtCity);
             Controls.Add(txtaddress);
             Controls.Add(txtcontactTitle);
@@ -105,6 +125,7 @@
             Controls.Add(btnnewSupplier);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -117,5 +138,7 @@
         private TextBox txtcontactTitle;
         private TextBox txtaddress;
         private TextBox txtCity;
+        private ListBox listBox1;
+        private ListBox listBox2;
     }
 }

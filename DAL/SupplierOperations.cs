@@ -8,7 +8,7 @@ namespace DAL
     {
        static string cnstring = "server=mazenet-test;Integrated Security=true;database=Northwind;TrustServerCertificate=true";
 
-        public bool DeleteSupplier(int id)
+        public async Task<bool> DeleteSupplier(int id)
         {
             bool status = false;
             //For Example: In Bank app, when funds are transferred from one account to another
@@ -26,20 +26,25 @@ namespace DAL
                         SqlCommand cmd = new SqlCommand("[dbo].[sp_DeleteSupplier]", cn);
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@p_SuppID", id);
-                        cn.Open();
-                        cmd.ExecuteNonQuery();
+                        //cn.Open();
+                        cn.OpenAsync();   //First step
+                                          // cmd.ExecuteNonQuery();
+                        await cmd.ExecuteNonQueryAsync();//Second step
                         // cn.Close();
                         //cn.Dispose();
-                        scope.Complete();
+                        await Task.Run(() => scope.Complete()); //Third
                         cn.Close();
                         status = true;
                     }
                 }
+
                 catch (Exception ex)
                 {
 
+                    await Task.Run(() => scope.Dispose());
                     throw ex;
                 }
+            
             }
             return status;
 

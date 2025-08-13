@@ -64,6 +64,16 @@ namespace BusinessLogicLayer
 
 		}
 
+		public List<string> cityListShow, namesListShow;
+        public async Task GetNamesAndCitiesOfSuppliers()
+		{
+			CustomersOrders custorders = new CustomersOrders();
+			await custorders.GetData();
+			  cityListShow=custorders.cities;
+              namesListShow = custorders.names;
+
+        }
+
 
 
 
