@@ -9,6 +9,7 @@ namespace DAL
         public bool AddSupplier(Supplier supplier) {
             //[dbo].[sp_InsertSupplier]
             bool status = false;
+            SqlTransaction tran = null;
             try
             {
             SqlConnection cn = new SqlConnection(cnstring);
@@ -20,13 +21,17 @@ namespace DAL
             cmd.Parameters.AddWithValue("@p_Address", supplier.Address);
             cmd.Parameters.AddWithValue("@p_City", supplier.City);
             cn.Open();
+                 tran=cn.BeginTransaction();
+
             cmd.ExecuteNonQuery();
+                tran.Commit();
             cn.Close();
             cn.Dispose();
                 status = true;
             }
             catch (Exception ex)
             {
+                tran.Rollback();
                throw ex;
             }
             return status;
