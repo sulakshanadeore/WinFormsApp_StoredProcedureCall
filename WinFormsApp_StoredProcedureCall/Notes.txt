@@ -1,0 +1,7 @@
+﻿1)Create Stored Procedure in SQL SERVER(Database---Programmabiltiy)
+
+2) DAL---insert/update/delete/Stored Procedure/Function(Default-->30 sec) 
+cn.Open();--->30 seconds--->Timeout---> transaction/process--cancelled
+3) BAL
+4)  Windows App
+
