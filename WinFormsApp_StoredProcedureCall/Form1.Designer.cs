@@ -44,6 +44,7 @@
             btnnewSupplier.TabIndex = 0;
             btnnewSupplier.Text = "Register";
             btnnewSupplier.UseVisualStyleBackColor = true;
+            btnnewSupplier.Click += btnnewSupplier_Click;
             // 
             // txtCompanyName
             // 
